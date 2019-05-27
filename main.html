@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			.in {
+				border: 2px solid red;
+				margin-top: 0.5%;
+				font-size: 1vw;
+				flex: left;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Spyer</h1>
+		<form method="POST" class="lol" action="newgame.php">
+			<input value="Создать" type="submit" class="in">
+		</form>
+		<form method="GET" class="lol" action="connect.php">
+			<input value="" name="game_id" type="number" class="in">
+			<br />
+			<input value="Присоединиться" type="submit" class="in">
+		</form>
+		<form class="lol" action="logout.php">
+			<input value="Logout" type="submit" class="in">
+		</form>
+	</body>
+</html>
