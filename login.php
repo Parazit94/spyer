@@ -20,6 +20,6 @@ else
 {
 	$_SESSION['loggued_on_user'] = "";
 	header("Refresh:2; url=index.html");
-	echo "<h1>Not right login or password</h1>";
+	echo "<h1>Not right login or password</h1>"."\nlogin = ".$login.";\npasswd = ".$passw;
 }
 ?>

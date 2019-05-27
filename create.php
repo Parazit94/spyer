@@ -35,7 +35,7 @@ $log = $_POST['login'];
 $pas = $_POST['passwd'];
 $sub = $_POST['submit'];
 
-if ($sub != "OK" || $pas == NULL || $pas == "")
+if ($pas == NULL || $pas == "")
 	ft_error(1);
 
 if (!file_exists("../private/"))
@@ -46,7 +46,10 @@ if (file_exists("../private/passwd"))
 	$file = file_get_contents("../private/passwd");
 	$file = unserialize($file);
 	if (($last = ft_check($file, $log)) == -1)
+	{
+		header('Refresh:2; url=create.html');
 		ft_error(1);
+	}
 	ft_create($log, $pas, $last, $file);
 }
 else 

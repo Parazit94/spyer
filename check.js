@@ -1,7 +1,8 @@
 var ft_list;
-
+var room_num;
 $(document).ready(function () {
 	ft_list = $('#ft_list');
+	room_num = $('#Room');
 });
 
 function upload() {
@@ -10,7 +11,7 @@ function upload() {
 		data = jQuery.parseJSON(data);
 		console.log(data);
 		jQuery.each(data, function (i, val) {
-			ft_list.prepend($('<div data-id="' + i + '">' + val + '</div>'));
+			ft_list.prepend($('<div class="player_tab" data-id="' + i + '">' + val + '</div>'));
 		});
 	});
 }
@@ -27,8 +28,18 @@ function worker() {
 			console.log('no upload\n');
 	  },
 	  complete: function() {
-		setTimeout(worker, 5000);
+		setTimeout(worker, 2000);
 	  }
+	});
+}
+
+function room() {
+	room_num.empty();
+	aj("GET", 'functions/give_game_id.php', function (data) {
+		if (data != 'false') {
+			console.log(data);
+			room_num.prepend($('<h1 id="number_alert">' + data + '</h1>'));
+		}
 	});
 }
 
@@ -40,3 +51,4 @@ function aj(method, url, status) {
 		status(data);
 	});
 }
+

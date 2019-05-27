@@ -1,0 +1,237 @@
+.logd
+{
+	background: ;
+	text-align: center;
+}
+.bla
+{
+	background: ;
+	left: 50%;
+	top: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+.buttons
+{
+	background: ;
+	height: 50px;
+	width: 100%;
+	border: 2px solid black;
+	color: #1F2833;
+	margin-bottom: 5px;
+	margin-top: 15px;
+	font-weight: bold;
+}
+#room_alert
+{
+	color: #22c7e8;
+	text-align: right;
+	height: 100%;
+	width: 100%;
+}
+#number_alert
+{
+	color: #42f4bf;
+	text-align: left;
+	height: 100%;
+	width: 100%;
+}
+#Begin_but
+{
+	background: #42f4bf;
+}
+#Abort_but
+{
+	background: #fc5d5d;
+}
+.kartinka
+{
+	text-align: center;
+	margin-bottom: 30px;
+}
+.players-field
+{
+	margin-top: 10px;
+	background: ;
+	margin-bottom: 20px;
+
+
+}
+.player_tab
+{
+	border: 1px solid white;
+	background: #D1C4E9;
+	display: block;
+	margin-bottom: 5px;
+	text-align: center;
+	font-weight: bold;
+	height: 30px;
+	border: 2px solid black;
+}
+
+.anim
+{
+	margin-top: 30px;
+	text-align: center;
+}
+.cssload-triangles {
+	transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+	height: 40px;
+	width: 45px;
+	position: absolute;
+	left: 50%;
+}
+
+.cssload-tri {
+	position: absolute;
+	animation: cssload-pulse 375ms ease-in infinite;
+		-o-animation: cssload-pulse 375ms ease-in infinite;
+		-ms-animation: cssload-pulse 375ms ease-in infinite;
+		-webkit-animation: cssload-pulse 375ms ease-in infinite;
+		-moz-animation: cssload-pulse 375ms ease-in infinite;
+	border-top: 13px solid rgb(33,90,109);
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-bottom: 0px;
+}
+.cssload-tri.cssload-invert {
+	border-top: 0px;
+	border-bottom: 13px solid rgb(33,90,109);
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+}
+.cssload-tri:nth-child(1) {
+	left: 15px;
+}
+.cssload-tri:nth-child(2) {
+	left: 7px;
+	top: 13px;
+	animation-delay: -62.5ms;
+		-o-animation-delay: -62.5ms;
+		-ms-animation-delay: -62.5ms;
+		-webkit-animation-delay: -62.5ms;
+		-moz-animation-delay: -62.5ms;
+}
+.cssload-tri:nth-child(3) {
+	left: 15px;
+	top: 13px;
+}
+.cssload-tri:nth-child(4) {
+	left: 22px;
+	top: 13px;
+	animation-delay: -312.5ms;
+		-o-animation-delay: -312.5ms;
+		-ms-animation-delay: -312.5ms;
+		-webkit-animation-delay: -312.5ms;
+		-moz-animation-delay: -312.5ms;
+}
+.cssload-tri:nth-child(5) {
+	top: 27px;
+	animation-delay: -125ms;
+		-o-animation-delay: -125ms;
+		-ms-animation-delay: -125ms;
+		-webkit-animation-delay: -125ms;
+		-moz-animation-delay: -125ms;
+}
+.cssload-tri:nth-child(6) {
+	top: 27px;
+	left: 7px;
+	animation-delay: -125ms;
+		-o-animation-delay: -125ms;
+		-ms-animation-delay: -125ms;
+		-webkit-animation-delay: -125ms;
+		-moz-animation-delay: -125ms;
+}
+.cssload-tri:nth-child(7) {
+	top: 27px;
+	left: 15px;
+	animation-delay: -187.5ms;
+		-o-animation-delay: -187.5ms;
+		-ms-animation-delay: -187.5ms;
+		-webkit-animation-delay: -187.5ms;
+		-moz-animation-delay: -187.5ms;
+}
+.cssload-tri:nth-child(8) {
+	top: 27px;
+	left: 22px;
+	animation-delay: -250ms;
+		-o-animation-delay: -250ms;
+		-ms-animation-delay: -250ms;
+		-webkit-animation-delay: -250ms;
+		-moz-animation-delay: -250ms;
+}
+.cssload-tri:nth-child(9) {
+	top: 27px;
+	left: 30px;
+	animation-delay: -250ms;
+		-o-animation-delay: -250ms;
+		-ms-animation-delay: -250ms;
+		-webkit-animation-delay: -250ms;
+		-moz-animation-delay: -250ms;
+}
+
+
+@keyframes cssload-pulse {
+	0% {
+		opacity: 1;
+	}
+	16.666% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@-o-keyframes cssload-pulse {
+	0% {
+		opacity: 1;
+	}
+	16.666% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@-ms-keyframes cssload-pulse {
+	0% {
+		opacity: 1;
+	}
+	16.666% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes cssload-pulse {
+	0% {
+		opacity: 1;
+	}
+	16.666% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@-moz-keyframes cssload-pulse {
+	0% {
+		opacity: 1;
+	}
+	16.666% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}

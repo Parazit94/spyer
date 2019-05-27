@@ -9,7 +9,7 @@ $my_name = $_SESSION['loggued_on_user'];
 check_me($my_name);
 if (($number = check_game_with_me($filename, $_SESSION['loggued_on_user'])) != 0)
 {
-	header("Refresh:2; url=lobbi.php?game_id=".$number);
+	header("Refresh:2; url=lobbi.html?game_id=".$number);
 	echo "<h1>Вы уже в игре с ID ".$number."!</h1>".PHP_EOL;
 	return ;
 }
@@ -31,8 +31,8 @@ if (isset($games))
 }
 else
 	$games = array($players);
-print_r($games);
 $games = serialize($games);
 file_put_contents($filename, $games);
 check();
+header("Refresh:2; url=lobbi.html?game_id=".$newGame);
 ?>
