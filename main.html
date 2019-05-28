@@ -8,8 +8,8 @@
 	<title>Main</title>
   </head>
 
-  <body style="background:#1F2833;">
-    <div class="container bla">
+<body style="background:#1F2833;">
+	<div class="container bla">
 		<div class="row">
 			<div class="col-sm-6 col-6 logd">
 					<img src="pics/ADD.png">
@@ -23,29 +23,20 @@
 				<form method="POST" action="newgame.php">
 					<button value="Создать" type="submit" class="buttons" id="Create-button">Create a game</button>
 				</form>
+				<form action="logout.php">
+						<button value="Logout" type="submit" class="buttons" id="Logout-button">Logout</button>
+					</form>
 			</div>
 			<div class="col-sm-6 col-6 logd">
-				<form method="POST" action="connect.php">
+				<form method="GET" action="connect.php">
+						<input value="" class="buttons" name="game_id" type="number" id="Connect-input" placeholder="Game ID">
 					<button value="Присоединиться" class="buttons" type="submit" id="Connect-button">Connect</button>
 				</form>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-sm-6 col-6 logd">
-				<form action="logout.php">
-					<button value="Logout" type="submit" class="buttons" id="Logout-button">Logout</button>
-				</form>
-			</div>
-			<div class="col-sm-6 col-6 logd">
-				<form method="GET" action="connect.php">
-					<input value="" class="buttons" name="game_id" type="number" id="Connect-input" placeholder="Game ID">
-				</form>
-			</div>
-		</div>
 	</div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
 </html>

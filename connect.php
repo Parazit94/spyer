@@ -2,6 +2,7 @@
 session_start();
 include 'functions/check_sesion.php';
 include 'functions/last_change.php';
+include 'functions/check_game_with_me.php';
 $filename = '../private/games';
 function add_me($arr, $name, $l, $filename)
 {
@@ -20,10 +21,17 @@ function add_me($arr, $name, $l, $filename)
 $game_id = $_GET['game_id'];
 $name = $_SESSION['loggued_on_user'];
 check_me($name);
+if (($number = check_game_with_me($filename, $_SESSION['loggued_on_user'])) != 0)
+{
+	header("Refresh:2; url=lobbi.html?game_id=".$number);
+	$_SESSION['game_id'] = $number;
+	echo "<h1>Вы уже в игре с ID ".$number."!</h1>".PHP_EOL;
+	return ;
+}
 if (!file_exists($filename))
 {
 	header("Refresh:2; url=main.html");
-	echo "<h1>Нет игры с таким ID!</h1>".PHP_EOL;
+	echo "<h1>Нет игры с таким ID! ID = ".$game_id."</h1>".PHP_EOL;
 	return ;
 }
 $data = file_get_contents($filename);
@@ -41,5 +49,5 @@ while ($data[$i])
 	$i++;
 }
 header('Refresh: 2; url=main.html');
-echo "<h1>Нет игры с таким ID".$game_id."!<h1>".PHP_EOL;
+echo "<h1>Нет игры с таким ID! ID = ".$game_id."</h1>".PHP_EOL;
 ?>

@@ -10,6 +10,7 @@ check_me($my_name);
 if (($number = check_game_with_me($filename, $_SESSION['loggued_on_user'])) != 0)
 {
 	header("Refresh:2; url=lobbi.html?game_id=".$number);
+	$_SESSION['game_id'] = $number;
 	echo "<h1>Вы уже в игре с ID ".$number."!</h1>".PHP_EOL;
 	return ;
 }
