@@ -8,11 +8,20 @@ $(document).ready(function () {
 function upload() {
 	ft_list.empty();
 	aj("GET", 'select.php', function (data) {
-		data = jQuery.parseJSON(data);
-		console.log(data);
-		jQuery.each(data, function (i, val) {
-			ft_list.prepend($('<div class="player_tab" data-id="' + i + '">' + val + '</div>'));
-		});
+		if (data == "false") {
+			document.location.replace("main.html");
+		}
+		else if (data == "true") {
+			document.location.replace("modif.html");
+		}
+		else {
+			data = jQuery.parseJSON(data);
+			console.log(data);
+			jQuery.each(data, function (i, val) {
+				ft_list.prepend($('<div class="player_tab" data-id="' + i + '">' + val + '</div>'));
+			});
+		}
+			
 	});
 }
 

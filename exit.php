@@ -11,23 +11,31 @@ while ($data[$i])
 {
 	if ($data[$i]['game_id'] == $game_id)
 	{
-		$j = 0;
-		$k = -1;
-		$lol = 0;
-		while ($data[$i][$j])
+		if ($_SESSION['my_game'] == 1)
 		{
-			if ($lol == 1)
+			unset($data[$i]);
+			$data = array_values($data);
+		}
+		else
+		{
+			$j = 0;
+			$k = -1;
+			$lol = 0;
+			while ($data[$i][$j])
 			{
-				$data[$i][$k] = $data[$i][$j];
-				unset($data[$i][$j]);
+				if ($lol == 1)
+				{
+					$data[$i][$k] = $data[$i][$j];
+					unset($data[$i][$j]);
+				}
+				if ($data[$i][$j] == $my_name)
+				{
+					$lol = 1;
+					unset($data[$i][$j]);
+				}
+				$j++;
+				$k++;
 			}
-			if ($data[$i][$j] == $my_name)
-			{
-				$lol = 1;
-				unset($data[$i][$j]);
-			}
-			$j++;
-			$k++;
 		}
 		$data = serialize($data);
 		file_put_contents($filename, $data);
