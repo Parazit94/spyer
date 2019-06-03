@@ -23,6 +23,7 @@ else {
 }
 $players = array('game_id'=>$newGame, $my_name);
 $_SESSION['game_id'] = $newGame;
+$_SESSION['my_game'] = 1;
 if (isset($games))
 {
 	$i = 0;
@@ -35,5 +36,5 @@ else
 $games = serialize($games);
 file_put_contents($filename, $games);
 check();
-header("Refresh:2; url=lobbi.html?game_id=".$newGame);
+header("Refresh:0; url=lobbi.html?game_id=".$newGame);
 ?>
