@@ -10,13 +10,33 @@
 
   <body style="background:#1F2833;">
     <div class="container bla">
+
+		<div class="row">
+			<div class="col-sm-12 col-12 kartinka">
+				<img src="pics/USERS.png">
+			</div>
+		</div>
+
+		<form method="POST" action="create.php">
+			<div class="row">
+				<div class="col-sm-12 col-12 logd">
+					<input name="login" value="" placeholder="User login" class="forms">
+				</div>
+				<div class="col-sm-12 col-12 logd">
+					<input name="passwd" value="" type="password" placeholder="User password" class="forms">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12 col-12 logd margin">
+					<button value="Log" type="submit" class="buttons" id="reg-button">Create User</button>
+				</div>
+			</div>
+		</form>
+
 		<div class="row">
 			<div class="col-sm-12 col-12 logd">
-				<form method="POST" action="create.php">
-					<input name="login" value="" placeholder="login" class="forms">
-					<input name="passwd" value="" type="password" placeholder="Password" class="forms" >
-					<button value="Log" type="submit" class="buttons" id="reg-button">Create User</button>
-				</form>
+				<a href="index.html"><button value="Log" type="submit" class="buttons" id="abort-button">Fuck go back</button></a>
 			</div>
 		</div>
 
