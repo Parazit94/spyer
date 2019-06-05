@@ -22,6 +22,8 @@ if (file_exists($filename))
 				$arr = $mas[$i];
 				check_ok($arr);
 				unset($arr['game_id']);
+				unset($arr['maps']);
+				unset($arr['current']);
 				break;
 			}
 			$i++;

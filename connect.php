@@ -14,6 +14,7 @@ function add_me($arr, $name, $l, $filename)
 		$j++;
 	}
 	$arr[$l][$j] = $name;
+	$arr[$l]['players']++;
 	$arr = serialize($arr);
 	file_put_contents($filename, $arr);
 	check();
@@ -25,13 +26,14 @@ if (($number = check_game_with_me($filename, $_SESSION['loggued_on_user'])) != 0
 {
 	header("Refresh:2; url=lobbi.html?game_id=".$number);
 	$_SESSION['game_id'] = $number;
-	echo "<h1>Вы уже в игре с ID ".$number."!</h1>".PHP_EOL;
+	print($_SESSION['loggued_on_user']);
+	echo "<h1>Вы уже в игре с ID asdfasdf".$number."!</h1>".PHP_EOL;
 	return ;
 }
 if (!file_exists($filename))
 {
 	header("Refresh:2; url=main.html");
-	echo "<h1>Нет игры с таким ID! ID = ".$game_id."</h1>".PHP_EOL;
+	echo "<h1>asdfasdfНет игры с таким ID! ID = ".$game_id."</h1>".PHP_EOL;
 	return ;
 }
 $data = file_get_contents($filename);
@@ -49,5 +51,5 @@ while ($data[$i])
 	$i++;
 }
 header('Refresh: 2; url=main.html');
-echo "<h1>Нет игры с таким ID! ID = ".$game_id."</h1>".PHP_EOL;
+echo "<h1>312312312Нет игры с таким ID! ID = ".$game_id."</h1>".PHP_EOL;
 ?>

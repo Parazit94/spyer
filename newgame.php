@@ -3,6 +3,7 @@ session_start();
 include 'functions/check_game_with_me.php';
 include 'functions/check_sesion.php';
 include 'functions/last_change.php';
+include 'functions/get_maps.php';
 
 $filename = '../private/games';
 $my_name = $_SESSION['loggued_on_user'];
@@ -21,9 +22,11 @@ else {
 	$games = unserialize($data);
 	$newGame = rand(1000, 9999);
 }
-$players = array('game_id'=>$newGame, $my_name);
+if (($maps = get_maps()) == false)
+	header("Refresh:0; url=main.html");
+$players = array('game_id'=>$newGame, $my_name, 'maps'=>$maps, 'current'=>0, 'players'=>1);
 $_SESSION['game_id'] = $newGame;
-$_SESSION['my_game'] = 1;
+$_SESSION['my_game'] = "true";
 if (isset($games))
 {
 	$i = 0;

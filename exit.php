@@ -11,10 +11,11 @@ while ($data[$i])
 {
 	if ($data[$i]['game_id'] == $game_id)
 	{
-		if ($_SESSION['my_game'] == 1)
+		if ($_SESSION['my_game'] == "true")
 		{
 			unset($data[$i]);
 			$data = array_values($data);
+			unset($_SESSION['my_game']);
 		}
 		else
 		{
@@ -36,6 +37,7 @@ while ($data[$i])
 				$j++;
 				$k++;
 			}
+			$data[$i]['players']--;
 		}
 		$data = serialize($data);
 		file_put_contents($filename, $data);
