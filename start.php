@@ -4,7 +4,6 @@ session_start();
 function put_roles($data, $i, $game_id, $filename) {
 	$j = $data[$i]['current'];
 	$filename2 = $data[$i]['maps'][$j];
-	// print($filename2);
 	$j = $i;
 	if (file_exists($filename2)) {
 		$array = array();
@@ -23,12 +22,10 @@ function put_roles($data, $i, $game_id, $filename) {
 		array_push($arr, $i);
 		$i++;
 	}
-	print_r($arr);
 	$spyer = rand(0, ($c_players - 1));
 	unset($arr[$spyer]);
 	$role = array($spyer=>'Шпион');
 	shuffle($arr);
-	print_r($arr);
 	$i = 0;
 	while ($array[$i] && $i < ($c_players - 1)) {
 		$role[$arr[$i]] = $array[$i];
@@ -39,9 +36,15 @@ function put_roles($data, $i, $game_id, $filename) {
 		$i++;
 	}
 	$data[$j]['roles'] = $role;
-	print_r($data);
+	$date_now = time();
+	$date_start = $date_now + 10;
+	$date_finish = $date_start + ($c_players * 10);
+	$data[$j]['t_now'] = $date_now;
+	$data[$j]['t_start'] = $date_start;
+	$data[$j]['t_finish'] = $date_finish;
 	$data = serialize($data);
 	file_put_contents($filename, $data);
+	header("Refresh:0; url=game.html?game_id=".$_SESSION['game_id']);
 }
 
 $filename = '../private/games';

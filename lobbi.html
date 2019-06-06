@@ -10,7 +10,7 @@
 	<title>Room</title>
   </head>
 
-	<body style="background:#1F2833;" onload="upload(); worker(); room();">
+	<body style="background:#1F2833;" onload="upload(); worker(); room(); vote();">
 		<div class="container bla">
 			<div class="row">
 				<div class="col-sm-12 col-12 logd kartinka">
@@ -21,7 +21,7 @@
 				<div class="col-sm-2 col-2 logd">
 				</div>
 				<div class="col-sm-4 col-4 logd">
-					<h1 id="room_alert">Room : </h1>
+					<h3 id="room_alert">Room : </h3>
 				</div>
 				<div class="col-sm-4 col-4 logd" id="Room">
 				</div>
@@ -44,24 +44,8 @@
 				</div>
 				<div class="col-sm-6 col-6 logd">
 					<form action="start.php">
-						<button value="Logout" type="submit" class="buttons" id="Begin_but">Begin</button>
+						<button value="Start" type="submit" class="buttons" id="Begin_but">Begin</button>
 					</form>
-				</div>
-			</div>
-			<div class="row anim">
-				<div class="col-sm-6 col-6 logd"></div>
-				<div class="col-sm-6 col-6 logd">
-					<div class="cssload-triangles">
-						<div class="cssload-tri cssload-invert"></div>
-						<div class="cssload-tri cssload-invert"></div>
-						<div class="cssload-tri"></div>
-						<div class="cssload-tri cssload-invert"></div>
-						<div class="cssload-tri cssload-invert"></div>
-						<div class="cssload-tri"></div>
-						<div class="cssload-tri cssload-invert"></div>
-						<div class="cssload-tri"></div>
-						<div class="cssload-tri cssload-invert"></div>
-					</div>
 				</div>
 			</div>
 		</div>

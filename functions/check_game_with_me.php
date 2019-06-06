@@ -7,8 +7,9 @@ function check_game_with_me($filename, $name) {
 	$i = 0;
 	while ($data[$i]) {
 		foreach ($data[$i] as $val)
-			if ($val == $name)
+			if ($val === $name) {
 				return ($data[$i]['game_id']);
+			}
 		$i++;
 	}
 }

@@ -6,13 +6,14 @@ $(document).ready(function () {
 });
 
 function upload() {
+	var lol = decodeURIComponent(location.search.substr(1)).split('&');
 	ft_list.empty();
 	aj("GET", 'select.php', function (data) {
 		if (data == "false") {
 			document.location.replace("main.html");
 		}
 		else if (data == "true") {
-			document.location.replace("modif.html");
+			document.location.replace('game.html?' + lol[0]);
 		}
 		else {
 			data = jQuery.parseJSON(data);
@@ -37,7 +38,7 @@ function worker() {
 			console.log('no upload\n');
 	  },
 	  complete: function() {
-		setTimeout(worker, 2000);
+		setTimeout(worker, 500);
 	  }
 	});
 }
@@ -47,9 +48,13 @@ function room() {
 	aj("GET", 'functions/give_game_id.php', function (data) {
 		if (data != 'false') {
 			console.log(data);
-			room_num.prepend($('<h1 id="number_alert">' + data + '</h1>'));
+			room_num.prepend($('<h3 id="number_alert">' + data + '</h3>'));
 		}
 	});
+}
+
+function vote() {
+	aj("GET", 'functions/give_vote.php', function () {return;});
 }
 
 function aj(method, url, status) {
