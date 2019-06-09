@@ -16,6 +16,8 @@ while ($data[$i])
 			unset($data[$i]);
 			$data = array_values($data);
 			unset($_SESSION['my_game']);
+			if (file_exists('vote/'.$game_id.".csv"))
+				unlink('vote/'.$game_id.".csv");
 		}
 		else
 		{

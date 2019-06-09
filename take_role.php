@@ -11,6 +11,7 @@ if (!file_exists($filename1)) {
 		if ($data[$i]['game_id'] == $game_id)
 		{
 			$arr = $data[$i];
+			$data[$i]['ok'] = 'error';
 			$j = 0;
 			while ($arr[$j]) {
 				file_put_contents($filename1, "0;".$arr[$j].PHP_EOL, FILE_APPEND);
@@ -21,7 +22,9 @@ if (!file_exists($filename1)) {
 		$i++;
 	}
 }
+$data1 = serialize($data);
 $data = json_encode($data);
+file_put_contents($filename, $data1);
 print ($data);
 return ($data);
 ?>

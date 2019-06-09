@@ -6,8 +6,8 @@ function check() {
 		$_SESSION['last_change'] = filemtime($filename);
 	else
 	{
-		header('Refresh:3; url=main.html');
-		echo "Нет файла с играми! проверьте ../private/games".PHP_EOL;
+		header('Refresh:0; url=main.html');
+		// echo "Нет файла с играми! проверьте ../private/games".PHP_EOL;
 		exit ;
 	}
 }

@@ -7,7 +7,12 @@ var game_id;
 var src_img;
 var r_role;
 var r_loc;
+var r_new;
+var r_discon;
 var vote;
+var tr = false;
+var my_or_not = false;
+var rt = false;
 
 $(document).ready(function () {
 	mapp = $('#mapp');
@@ -15,6 +20,8 @@ $(document).ready(function () {
 	name_loc = $('#name_loc');
 	role = $('#role');
 	vote = $('#vote');
+	r_new = $('#start_new');
+	r_discon = $('#Discon');
 });
 
 //Парсинг данных
@@ -44,7 +51,6 @@ function parse1() {
 			r_role = data['role'];
 			r_loc = data['loc'];
 		}
-
 	});
 }
 
@@ -81,7 +87,26 @@ function update(tum) {
 	}
 	timer.empty();
 	timer.prepend($('<h2>' + min + ':' + sec + '</h2>'));
-	// console.log(data_g);
+}
+
+function exit() {
+	r_discon.empty();
+	if (my_or_not == true)
+		r_discon.prepend($('<form method="POST" action="exit.php" id="l_a"><button value="Logout" type="submit" class="buttons" id="Abort_but">Abort</button></form>'));
+	else
+		r_discon.prepend($('<form method="POST" action="exit.php" id="l_a"><button value="Logout" type="submit" class="buttons" id="Abort_but">Disconnect</button></form>'));
+}
+
+//Новая игра
+
+function new_or_not() {
+	var lol = decodeURIComponent(location.search.substr(1)).split('&');
+	aj("GET", "check.php", function (data) {
+		if (data == "true")
+			document.location.replace("lobbi.html?" + lol[0]);
+		else
+			setTimeout(new_or_not, 500);
+	})
 }
 
 //Голосование
@@ -89,25 +114,83 @@ function update(tum) {
 function vote_lol() {
 	aj("GET", "start_vote.php", function (data) {
 		var pol;
-		// console.log(data);
 		data = jQuery.parseJSON(data);
-		// console.log(data);
-		role.empty();
-		name_loc.empty();
-		mapp.empty();
+		if (tr == false) {
+			role.empty();
+			name_loc.empty();
+			mapp.empty();
+			map3("pics/WHOIS.png");
+			tr = true;
+		}
 		vote.empty();
-		map3("pics/WHOIS.png");
 		jQuery.each(data, function (i, val) {
 			pol = val.split(';');
 			vote.prepend($('<div class="player_tab" data-id="' + i + '">' + pol[1] + " - " + pol[0] + '</div>').click(vote_it));
 		});
+		if (check(data) == 1) {
+			rt = true;
+			new_or_not();
+		}
 	});
-	setTimeout(vote_lol, 1000);
+	if (rt == false)
+		setTimeout(vote_lol, 100);
 }
 
 function vote_it() {
 	if (confirm('Вы уверены?'))
 		aj("GET", "put_vote.php?id=" + $(this).data('id'), vote_lol);
+}
+
+function check(data) {
+	var i = 0;
+	var sum = 0;
+	var r_vote = -1;
+	var max = 0;
+	var count = 0
+	var mes_val;
+	var str;
+	while (data[i]) {
+		str = data[i];
+		data[i] = str.split(';');
+		str = data[i];
+		mes_val = parseInt(str[0], 10);
+		if (max == mes_val)
+			count++;
+		if (max < mes_val) {
+			max = mes_val;
+			r_vote = i;
+			count = 1;
+		}
+		sum += mes_val;
+		i++;
+	}
+	if (sum == i && count == 1) {
+		role.empty();
+		name_loc.empty();
+		mapp.empty();
+		timer.empty();
+		vote.empty();
+		if (data_g['roles'][r_vote] == 'Шпион') {
+			map3("pics/TROLL.png");
+			vote.prepend($('<h3> Вы выйграли!! Этого пиздюка поймали!</h3>'));
+		}
+		else {
+			map3("pics/WHOIS.png");
+			i = 0;
+			while (data_g['roles'][i]) {
+				if (data_g['roles'][i] == 'Шпион')
+					break ;
+				i++;
+			}
+			vote.prepend($('<h3> Шпионом был - ' + data_g[i] + '!!! Вы ЛОХИ!</h3>'));
+		}
+		if (my_or_not == true) {
+			r_new.empty();
+			r_new.prepend($('<form action="continue.php"><button value="Start" type="submit" class="buttons" id="Begin_but">NEXT</button></form>'));
+		}
+		return (1);
+	}
+	return (0);
 }
 
 /// Таймер
@@ -122,7 +205,6 @@ function take_new3() {
 	}
 	else {
 		update(tum);
-		// console.log(tum);
 		setTimeout(take_new3, 10);
 	}
 }
@@ -137,11 +219,10 @@ function take_new2() {
 		if (r_loc)
 			map2(r_loc);
 		take_new3();
-		// console.log("Игра началась");
+		exit();
 	}
 	else {
 		update(tum);
-		// console.log(tum);
 		setTimeout(take_new2, 10);
 	}
 }
@@ -165,14 +246,19 @@ function load_info() {
 	var lol = decodeURIComponent(location.search.substr(1)).split('&');
 	var kent = lol[0].split('=');
 	game_id = kent[1];
-	// console.log(game_id);
 	aj("GET", "take_role.php", function (data) {
-		// console.log(data);
 		data = jQuery.parseJSON(data);
+		console.log(data);
 		take_new(data);
 	});
-	// setTimeout(take_new2, 1000);
 };
+
+function my_game() {
+	aj("GET", "functions/mda.php", function (data) {
+		if (data == "true")
+			my_or_not = true;
+	})
+}
 
 function aj(method, url, status) {
 	$.ajax({

@@ -10,7 +10,7 @@
 	<title>Room</title>
   </head>
 
-	<body style="background:#1F2833;" onload="upload(); worker(); room(); vote();">
+	<body style="background:#1F2833;" onload="upload(); worker(); room(); vote(); my_game();">
 		<div class="container bla">
 			<div class="row">
 				<div class="col-sm-12 col-12 logd kartinka">
@@ -38,14 +38,10 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-6 col-6 logd">
-					<form method="POST" action="exit.php">
-							<button value="Logout" type="submit" class="buttons" id="Abort_but">Abort</button>
+					<form method="POST" action="exit.php" id="l_a">
 					</form>
 				</div>
-				<div class="col-sm-6 col-6 logd">
-					<form action="start.php">
-						<button value="Start" type="submit" class="buttons" id="Begin_but">Begin</button>
-					</form>
+				<div class="col-sm-6 col-6 logd" id="start">
 				</div>
 			</div>
 		</div>
