@@ -24,6 +24,7 @@ if (file_exists($filename))
 				unset($arr['game_id']);
 				unset($arr['maps']);
 				unset($arr['current']);
+				unset($arr['players']);
 				break;
 			}
 			$i++;
